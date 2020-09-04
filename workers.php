@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-
+include 'include/functions.php';
 
 //Соединяемся с базой данных используя наши доступы:
 $pdo = new PDO("mysql:host={$host};dbname={$db_name}", $user, $password);
@@ -30,5 +30,4 @@ if ($isTableShow) {
     $body .= include 'actions/worker-table.php';
 }
 
-$template = file_get_contents('templates/index.html');
-echo str_replace(['{{__BODY__}}', '{{__TITLE__}}'], [$body, 'Workers'], $template);
+render('templates/index.html', 'Workers', $body);
