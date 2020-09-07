@@ -13,6 +13,7 @@ if (isset($_GET['id'])) {
     $data = [
         'id' => '',
         'title' => '',
+        'worker_id' => '',
         'description' => '',
         'status' => '',
         'deadline' => ' ',
@@ -20,6 +21,18 @@ if (isset($_GET['id'])) {
     $header = 'Добавить новую задачу';
 }
 $deadline = (!empty($data['deadline'])) ? explode(' ', $data['deadline']) : ['',''];
+
+$result = $pdo->query('SELECT id, name, surname FROM workers');
+$workerSelect = '';
+while ($worker = $result->fetch()) {
+    $selected = ($data['worker_id'] === $worker['id']) ? 'selected' : '';
+
+    $workerSelect .= "<option value=\"{$worker['id']}\" {$selected}>{$worker['name']} {$worker['surname']}</option>";
+}
+
+$statusSelected = function ($status) use ($data) {
+    return ($data['status'] === $status) ? ' selected' : '';
+};
 
 return <<<HTML
 <div class="card">
@@ -30,6 +43,13 @@ return <<<HTML
             <div class="form-group">
                 <label for="title">Заголовок</label>
                 <input class="form-control" id="title" name="title" type="text" value="{$data['title']}">
+            </div>
+            <div class="form-group">
+                <label for="worker_id">Исполнитель</label>
+                <select name="worker_id" id="Worker_id" class="form-control">
+                    <option value="">Исполнитель не назначен</option>
+                    {$workerSelect}
+                </select>
             </div>
             <div class="form-group">
                 <label for="description">Описание</label>
