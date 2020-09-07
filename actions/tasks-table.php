@@ -27,15 +27,36 @@ $table = <<<HTML
 HTML;
 
 while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
+    $isStatus = '';
+    if ($data['status'] === 'new') {
+        $isStatus = 'Новое задание';
+    } elseif ($data['status'] === 'process') {
+        $isStatus = 'Выполняется';
+    } elseif ($data['status'] === 'done') {
+        $isStatus = 'Выполнено';
+    }
+
+    $dateCreated = new DateTime($data['created_at']);
+    $dateDeadline = new DateTime($data['deadline']);
+
+    $diff = $dateDeadline->getTimestamp() - time();
+
+    $classRed = 'table-success';
+    if ($diff < 0) {
+        $classRed = "table-danger";
+    } elseif ($diff <= 60*60*24) {
+        $classRed = "table-warning";
+    }
+
     $table .= <<<HTML
-<tr>
+<tr class={$classRed}>
     <td>{$data['id']}</td>
     <td>{$data['title']}</td>
     <td>{$data['worker_name']} {$data['worker_surname']}</td>
     
-    <td>{$data['status']}</td>
-    <td>{$data['created_at']}</td>
-    <td>{$data['deadline']}</td>
+    <td>{$isStatus}</td>
+    <td>{$dateCreated->format('d.m.Y H:i')}</td>
+    <td>{$dateDeadline->format('d.m.Y H:i')}</td>
     <td>
         <div class="btn-group">
             <a href="?action=edit&id={$data['id']}" class="btn btn-light">
