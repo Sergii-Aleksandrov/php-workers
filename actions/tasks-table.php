@@ -6,8 +6,7 @@ SELECT tasks.*,
 FROM tasks
     LEFT JOIN workers on tasks.worker_id = workers.id
 SQL;
-$query = $pdo->prepare($sql);
-$query->execute();
+$query = $pdo->query($sql);
 
 $table = <<<HTML
 <a class="btn btn-primary" href="?action=add">Добавить</a>
