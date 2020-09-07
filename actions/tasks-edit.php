@@ -57,7 +57,11 @@ return <<<HTML
             </div>
             <div class="form-group">
                 <label for="status">Статус</label>
-                <input class="form-control" id="status" name="status" type="text" value="{$data['status']}">
+                <select name="status" id="status" class="form-control">
+                    <option value="new" {$statusSelected('new')}>Новое задание</option>
+                    <option value="process" {$statusSelected('process')}>Выполняется</option>
+                    <option value="done" {$statusSelected('done')}>Выполнено</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="deadline">Срок окончания</label>
