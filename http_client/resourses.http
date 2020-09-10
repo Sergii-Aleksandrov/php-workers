@@ -1,0 +1,34 @@
+###
+//запрашиваем все строки из БД в формате json
+GET http://localhost:8080/api.php?path=/worker
+Content-Type: application/json
+
+###
+//запрашиваем одину строку из БД с id = 1
+GET http://localhost:8080/api.php?path=/worker/1
+
+###
+//отправляем новую строку(данные) в БД в формате x-www-form-urlencoded
+//новая трока(новые данные) передаем строкой и присваиваем значения userId='пустое значение'(т.к.генерируется автоматом), userName=Jon и т.д.
+POST http://localhost:8080/api.php?path=/worker
+Content-Type: application/x-www-form-urlencoded
+
+userId=&userName=Jon&userSurname=Jonson&userAge=22&userSalary=900
+
+###
+//усианавливаем пользователю с id=8 новую зарплату и другие необходимые новые данные
+PUT http://localhost:8080/api.php?path=/worker/9
+Content-Type: application/x-www-form-urlencoded
+
+userId=&userName=Piter&userSurname=Albatros&userAge=23222&userSalary=9000000
+
+###
+//удаляем пользователя с id = 8
+DELETE http://localhost:8080/api.php?path=/worker/8
+
+###
+//изменяем одно значение из строки БД и вносим изменения
+PATCH http://localhost:8080/api.php?path=/worker/10
+Content-Type: application/x-www-form-urlencoded
+
+dfjdkfjkjd=John
