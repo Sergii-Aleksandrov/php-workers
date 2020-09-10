@@ -4,7 +4,7 @@ if (!empty($_POST['userId'])) {
     $sql = <<<SQL
 UPDATE workers
 SET
-    age = :age,
+    age = :age, 
     name = :name,
     surname = :surname,
     salary = :salary
