@@ -22,7 +22,7 @@ switch ($method) {
             return false;
         }
 
-        //изменяем поле на новое значение
+        //изменяем в поле каждый столбец на новое значение
         $sql = <<<SQL
 UPDATE workers
 SET 
@@ -37,6 +37,7 @@ SQL;
         $parsed = file_get_contents('php://input');
         parse_str($parsed, $parsed);
         //print_r($parsed);
+        //exit();
 
         $query->execute([
             'age'     => $parsed['userAge'],
@@ -46,7 +47,7 @@ SQL;
             'id' => $resourceId
         ]);
 
-        //Возвращает все значения этого пля
+        //Возвращает все значения этого поля
         $query = $pdo->prepare("SELECT * FROM workers WHERE id = :id");
         $query->execute(['id' => $resourceId]);
         return $query->fetch(PDO::FETCH_ASSOC);
@@ -77,6 +78,7 @@ SQL;
         if (!$query->rowCount()) {
             return false;
         }
+
         $requestString = file_get_contents('php://input');
         parse_str($requestString, $_patch);
         //print_r($_patch);
