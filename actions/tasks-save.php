@@ -24,9 +24,9 @@ $deadline = !empty($_POST['deadline_date'])
     ? $_POST['deadline_date'] . ' ' . $_POST['deadline_time']
     : null;
 
-$worler_id = empty($_POST['worker_id']) ? null : $_POST['worker_id'];
+$worker_id = empty($_POST['worker_id']) ? null : $_POST['worker_id'];
 $query->bindParam('title', $_POST['title']);
-$query->bindParam('worker_id', $worler_id);
+$query->bindParam('worker_id', $worker_id);
 $query->bindParam('description', $_POST['description']);
 $query->bindParam('status', $_POST['status']);
 $query->bindParam('deadline', $deadline);
