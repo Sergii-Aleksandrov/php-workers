@@ -24,7 +24,7 @@ $resourceId = isset($arrayPath[1]) ? $arrayPath[1] : null;
 //представляет соединение м/д PHP и сервером БД
 $pdo = new PDO("mysql:host={$host};dbname={$db_name}", $user, $password);
 
-//создаем переменную "ответ" и помещаем туда null
+//создаем переменную "ответ" и помещаем туда null для дальнейшего ее изменения
 $response = null;
 
 //в зависимости от $resource(пути) выполняем следующий скрипт
@@ -42,9 +42,11 @@ switch ($resource) {
 
     //если $resource = 'task' выводим данные таблицы task:
     case 'task':
+        //Проверяем, если у нас нет id тогда в ответ записываем все данные из БД
         if (is_null($resourceId)) {
             $response = include 'resources/tasks.php';
         } else {
+            //записываем одного пльзователя с id = id
             $response = include 'resources/task.php';
         }
         break;
