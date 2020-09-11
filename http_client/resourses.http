@@ -16,7 +16,7 @@ Content-Type: application/x-www-form-urlencoded
 userId=&userName=Jon&userSurname=Jonson&userAge=22&userSalary=900
 
 ###
-//усианавливаем пользователю с id=8 новую зарплату и другие необходимые новые данные
+//устанавливаем полю с id=8 новые данные
 PUT http://localhost:8080/api.php?path=/worker/9
 Content-Type: application/x-www-form-urlencoded
 
@@ -28,7 +28,45 @@ DELETE http://localhost:8080/api.php?path=/worker/8
 
 ###
 //изменяем одно значение из строки БД и вносим изменения
-PATCH http://localhost:8080/api.php?path=/worker/10
+PATCH http://localhost:8080/api.php?path=/worker/12
 Content-Type: application/x-www-form-urlencoded
 
-dfjdkfjkjd=John
+userName=Boris
+
+
+
+
+
+###
+//запрашиваем все данные из БД tasks
+GET http://localhost:8080/api.php?path=/task
+Content-Type: application/json
+
+###
+//запрашиваем одну строку из БД с id=6
+GET http://localhost:8080/api.php?path=/task/6
+
+###
+//отправляем новые данные
+POST http://localhost:8080/api.php?path=/task
+Content-Type: application/x-www-form-urlencoded
+
+title=task_2&description=new_task_2&status=new&deadline_date=2020-09-30&deadline_time=13:00&worker_id=10
+
+###
+//удаляем пользователя с id = 10
+DELETE http://localhost:8080/api.php?path=/task/10
+
+###
+//устанавливаем для поля с id = 18 новые данные
+PUT http://localhost:8080/api.php?path=/task/18
+Content-Type: application/x-www-form-urlencoded
+
+title=task_3&description=new_task_3&status=new&deadline_date=2020-10-30&deadline_time=00:00&worker_id=9
+
+###
+//изменяем одно значение из строки БД и вносим изменения для одного поля с id = 18. При передачи строки с латиницей, пробелами и прочее, необходимо закодировать эту строку. Это зависит от Content-Type
+PATCH http://localhost:8080/api.php?path=/task/18
+Content-Type: application/x-www-form-urlencoded
+
+deadline=2020-10-30+00%3A00%3A00
