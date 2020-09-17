@@ -25,18 +25,18 @@ SQL;
         $parsed = json_decode($parsed, true);
 
         //если существует конечная дата,-обьединяем ее в строку ч/з пробел
-        $deadline = !empty($_POST['deadline_date'])
-            ? $_POST['deadline_date'] . ' ' . $_POST['deadline_time']
+        $deadline = !empty($parsed['deadline_date'])
+            ? $parsed['deadline_date'] . ' ' . $parsed['deadline_time']
             : null;
        /* print_r($deadline);
         exit();*/
 
         //выполняем запрос
         $query->execute([
-            'title' => $_POST['title'],
-            'worker_id' => $_POST['worker_id'],
-            'description' => $_POST['description'],
-            'status' => $_POST['status'],
+            'title' => $parsed['title'],
+            'worker_id' => $parsed['worker_id'],
+            'description' => $parsed['description'],
+            'status' => $parsed['status'],
             'deadline' => $deadline
         ]);
 
