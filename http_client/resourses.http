@@ -49,20 +49,20 @@ GET http://localhost:8080/api.php?path=/task/6
 ###
 //отправляем новые данные
 POST http://localhost:8080/api.php?path=/task
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
 
-title=task_2&description=new_task_2&status=new&deadline_date=2020-09-30&deadline_time=13:00&worker_id=10
+{"title":"task_2", "description": "new_task_2", "status": "new", "deadline_date": "2020-09-30", "deadline_time": "13:00", "worker_id": "10"}
 
 ###
 //удаляем пользователя с id = 10
-DELETE http://localhost:8080/api.php?path=/task/10
+DELETE http://localhost:8080/api.php?path=/task/12
 
 ###
 //устанавливаем для поля с id = 18 новые данные
-PUT http://localhost:8080/api.php?path=/task/18
-Content-Type: application/x-www-form-urlencoded
+PUT http://localhost:8080/api.php?path=/task/10
+Content-Type: application/json
 
-title=task_3&description=new_task_3&status=new&deadline_date=2020-10-30&deadline_time=00:00&worker_id=9
+{"title":"task_20202", "description": "2", "status": "new", "deadline_date": "2020-09-30", "deadline_time": "13:00", "worker_id": "10"}
 
 ###
 //изменяем одно значение из строки БД и вносим изменения для одного поля с id = 18. При передачи строки с латиницей, пробелами и прочее, необходимо закодировать эту строку. Это зависит от Content-Type
