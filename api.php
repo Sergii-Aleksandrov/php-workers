@@ -27,6 +27,15 @@ $pdo = new PDO("mysql:host={$host};dbname={$db_name}", $user, $password);
 //создаем переменную "ответ" и помещаем туда null для дальнейшего ее изменения
 $response = null;
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: PUT, POST, GET, DELETE, PATCH');
+header('Access-Control-Allow-Headers: Content-Type');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 //в зависимости от $resource(пути) выполняем следующий скрипт
 switch ($resource) {
     //если $resource = 'worker' выводим данные таблицы worker:
