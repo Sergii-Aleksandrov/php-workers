@@ -24,10 +24,10 @@ SQL;
         $parsed = json_decode($parsed, true);
         //выполняем запрос. Передаем параметры в 'age' из $_POST['userAge'], и т.д.
         $query->execute([
-            'age'     => $_POST['userAge'],
-            'name'    => $_POST['userName'],
-            'surname' => $_POST['userSurname'],
-            'salary'  => $_POST['userSalary']
+            'age'     => $parsed['age'] ?? null,
+            'name'    => $parsed['name'] ?? null,
+            'surname' => $parsed['surname'] ?? null,
+            'salary'  => $parsed['salary'] ?? null
         ]);
 
         //Возвращает ID последней вставленной строки
