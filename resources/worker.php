@@ -35,7 +35,7 @@ SQL;
 
         $query = $pdo->prepare($sql);
         $parsed = file_get_contents('php://input');
-        parse_str($parsed, $parsed);
+        $parsed = json_decode($parsed, true);
         //print_r($parsed);
         //exit();
 
