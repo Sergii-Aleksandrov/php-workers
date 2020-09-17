@@ -21,6 +21,8 @@ VALUE (:title, :description, :status, :deadline, :worker_id)
 SQL;
         //подготавливаем запрос
         $query = $pdo->prepare($sql);
+        $parsed = file_get_contents('php://input');
+        $parsed = json_decode($parsed, true);
 
         //если существует конечная дата,-обьединяем ее в строку ч/з пробел
         $deadline = !empty($_POST['deadline_date'])
