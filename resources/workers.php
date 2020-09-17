@@ -20,6 +20,8 @@ INSERT INTO workers (age, name, surname, salary) VALUE (:age, :name, :surname, :
 SQL;
         //подготавливаем запрос
         $query = $pdo->prepare($sql);
+        $parsed = file_get_contents('php://input');
+        $parsed = json_decode($parsed, true);
         //выполняем запрос. Передаем параметры в 'age' из $_POST['userAge'], и т.д.
         $query->execute([
             'age'     => $_POST['userAge'],
