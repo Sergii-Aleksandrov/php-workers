@@ -11,16 +11,16 @@ if (isset($_GET['id'])) {
 
 } else {
     $data = [
-        'id' => '',
-        'title' => '',
-        'worker_id' => '',
+        'id'          => '',
+        'title'       => '',
+        'worker_id'   => '',
         'description' => '',
-        'status' => '',
-        'deadline' => ' ',
+        'status'      => '',
+        'deadline'    => ' ',
     ];
     $header = 'Добавить новую задачу';
 }
-$deadline = (!empty($data['deadline'])) ? explode(' ', $data['deadline']) : ['',''];
+$deadline = (!empty($data['deadline'])) ? explode(' ', $data['deadline']) : ['', ''];
 
 $result = $pdo->query('SELECT id, name, surname FROM workers');
 $workerSelect = '';
@@ -58,9 +58,9 @@ return <<<HTML
             <div class="form-group">
                 <label for="status">Статус</label>
                 <select name="status" id="status" class="form-control">
-                    <option value="new" {$statusSelected('new')}>Новое задание</option>
+                <option value="new" {$statusSelected('new')}>Новое задание</option>
                     <option value="process" {$statusSelected('process')}>Выполняется</option>
-                    <option value="done" {$statusSelected('done')}>Выполнено</option>
+                    <option value="done" {$statusSelected('done')}>Выполнено</option> 
                 </select>
             </div>
             <div class="form-group">
