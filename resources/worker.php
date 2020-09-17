@@ -40,10 +40,10 @@ SQL;
         //exit();
 
         $query->execute([
-            'age'     => $parsed['userAge'],
-            'name'    => $parsed['userName'],
-            'surname' => $parsed['userSurname'],
-            'salary'  => $parsed['userSalary'],
+            'age'     => $parsed['age'],
+            'name'    => $parsed['name'],
+            'surname' => $parsed['surname'],
+            'salary'  => $parsed['salary'],
             'id' => $resourceId
         ]);
 
