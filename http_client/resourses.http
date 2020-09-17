@@ -8,19 +8,19 @@ Content-Type: application/json
 GET http://localhost:8080/api.php?path=/worker/1
 
 ###
-//отправляем новую строку(данные) в БД в формате x-www-form-urlencoded
+//отправляем новую строку(данные) в БД
 //новая трока(новые данные) передаем строкой и присваиваем значения userId='пустое значение'(т.к.генерируется автоматом), userName=Jon и т.д.
 POST http://localhost:8080/api.php?path=/worker
-Content-Type: application/x-www-form-urlencoded
+Content-Type:  application/json
 
-userId=&userName=Jon&userSurname=Jonson&userAge=22&userSalary=900
+{"age": "33", "name": "Peter", "surname": "Pan5", "salary": "2345"}
 
 ###
-//устанавливаем полю с id=8 новые данные
-PUT http://localhost:8080/api.php?path=/worker/9
-Content-Type: application/x-www-form-urlencoded
+//устанавливаем полю с id=9 новые данные
+PUT http://localhost:8080/api.php?path=/worker/2
+Content-Type:  application/json
 
-userId=&userName=Piter&userSurname=Albatros&userAge=23222&userSalary=9000000
+{"age": "25", "name": "Peter", "surname": "Parker", "salary": "2345"}
 
 ###
 //удаляем пользователя с id = 8
