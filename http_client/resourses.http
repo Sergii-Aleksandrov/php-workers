@@ -54,8 +54,8 @@ Content-Type: application/json
 {"title":"task_2", "description": "new_task_2", "status": "new", "deadline_date": "2020-09-30", "deadline_time": "13:00", "worker_id": "10"}
 
 ###
-//удаляем пользователя с id = 10
-DELETE http://localhost:8080/api.php?path=/task/12
+//удаляем пользователя с id
+DELETE http://localhost:8080/api.php?path=/task/14
 
 ###
 //устанавливаем для поля с id = 18 новые данные
