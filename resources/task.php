@@ -29,8 +29,13 @@ switch ($method) {
 
         //изменяем в поле каждый столбец на новое значение
         $requestString = file_get_contents('php://input');
-        parse_str($requestString, $_patch);
-        /*print_r($_patch);
+        $requestString = json_decode($requestString, true);
+        //parse_str($requestString, $_patch);
+       /* print_r($requestString);
+        exit();*/
+
+
+        /*print_r($deadline);
         exit();*/
 
         $deadline = !empty($_patch['deadline_date'])
