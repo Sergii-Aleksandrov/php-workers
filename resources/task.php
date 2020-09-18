@@ -72,14 +72,10 @@ SQL;
 
 
     case 'DELETE':
-        //формируем запрос на удаление с id = id
-        $query = $pdo->prepare("DELETE FROM tasks WHERE id = :id");
-        //выполняем, при этом в запрос вместо id подставится id из переменной $resourceId
+        $query = $pdo->prepare("SELECT * FROM tasks WHERE id = :id");
         $query->execute(['id' => $resourceId]);
-
-        //записываем массив в переменную для проверки на наличие строки с заданным id
         $data = $query->fetch(PDO::FETCH_ASSOC);
-        //проверяем, если у нас нет строки с таким id - 404
+
         if (!$data) {
             return false;
         }
