@@ -79,6 +79,13 @@ SQL;
         if (!$data) {
             return false;
         }
+
+        //формируем запрос на удаление с id = id
+        $query = $pdo->prepare("DELETE FROM tasks WHERE id = :id");
+        //выполняем, при этом в запрос вместо id подставится id из переменной $resourceId
+        $query->execute(['id' => $resourceId]);
+
+        return $data;
         break;
 
     case 'PATCH':
