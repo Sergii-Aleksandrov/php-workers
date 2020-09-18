@@ -38,11 +38,7 @@ switch ($method) {
         /*print_r($deadline);
         exit();*/
 
-        $deadline = !empty($_patch['deadline_date'])
-            ? $_patch['deadline_date'] . ' ' . $_patch['deadline_time']
-            : null;
-
-        $worker_id = empty($_patch['worker_id']) ? null : $_patch['worker_id'];
+        $worker_id = empty($requestString['worker_id']) ? null : $requestString['worker_id'];
 
         $sql = <<<SQL
 UPDATE tasks
