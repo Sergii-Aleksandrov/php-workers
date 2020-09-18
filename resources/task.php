@@ -56,9 +56,9 @@ WHERE id = :id
 SQL;
         $query = $pdo->prepare($sql);
         $query->execute([
-            'title' => $_patch['title'],
-            'description' => $_patch['description'],
-            'status' => $_patch['status'],
+            'title' => $requestString['title'],
+            'description' => $requestString['description'],
+            'status' => $requestString['status'],
             'worker_id' => $worker_id,
             'deadline' => $deadline,
             'id' => $resourceId
