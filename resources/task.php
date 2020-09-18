@@ -56,7 +56,7 @@ SQL;
             'description' => $requestString['description'],
             'status' => $requestString['status'],
             'worker_id' => $worker_id,
-            'deadline' => $deadline,
+            'deadline' => $requestString['deadline'],
             'id' => $resourceId
         ]);
 
